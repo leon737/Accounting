@@ -8,24 +8,12 @@ namespace Cash.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-
-            routes.MapRoute(
-               name: "TasksRoute",
-               url: "{project}/Tasks/{action}/{id}",
-               defaults: new { controller = "Tasks", action = "Index", id = UrlParameter.Optional }
-           );
-
-            routes.MapRoute(
-               name: "ResourcesRoute",
-               url: "{project}/Resources/{action}/{id}",
-               defaults: new { controller = "Resources", action = "Index", id = UrlParameter.Optional }
-           );
-
+            
             routes.MapRoute(
                name: "Default",
                url: "{controller}/{action}/{id}",
-               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+               namespaces: new [] { "Cash.Web.Controllers"}
            );
 
             
