@@ -22,17 +22,12 @@ namespace Cash.Web.IoC
             builder.RegisterType<Session>().As<ISession>().InstancePerRequest();
 
             // repositories
-            builder.RegisterType<ResourceMeasureUnitRepository>().As<IResourceMeasureUnitRepository>();
-            builder.RegisterType<ResourceRepository>().As<IResourceRepository>();
-            builder.RegisterType<TaskRepository>().As<ITaskRepository>();
-            builder.RegisterType<TaskResourceRepository>().As<ITaskResourceRepository>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();
-            builder.RegisterType<ProjectRepository>().As<IProjectRepository>();
-            builder.RegisterType<TaskTypeRepository>().As<ITaskTypeRepository>();
-            builder.RegisterType<TaskStatusRepository>().As<ITaskStatusRepository>();
+            builder.RegisterType<AccountRepository>().As<IAccountRepository>();
+            builder.RegisterType<AccountTransactionRepository>().As<IAccountTransactionRepository>();
 
             // services
-            builder.RegisterType<TaskService>().As<ITaskService>();
+
             builder.RegisterType<TransliterationService>().As<ITransliterationService>();
 
             // automapper

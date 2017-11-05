@@ -199,26 +199,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProjectsController.cs" />
-    <Compile Include="Controllers\TasksController.cs" />
-    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IoC\WebModule.cs" />
     <Compile Include="Mapper\WebApiAutomapperProfile.cs" />
     <Compile Include="ModelBinders\UserModelBinder.cs" />
-    <Compile Include="ModelBinders\ProjectModelBinder.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DisplayProjectViewModel.cs" />
-    <Compile Include="Models\DisplayResourceViewModel.cs" />
-    <Compile Include="Models\DisplayTaskViewModel.cs" />
-    <Compile Include="Models\DisplayTreeTaskViewModel.cs" />
-    <Compile Include="Models\EditProjectViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\EditResourceViewModel.cs" />
-    <Compile Include="Models\EditTaskViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -488,16 +477,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Resources\Create.cshtml" />
-    <Content Include="Views\Resources\Delete.cshtml" />
-    <Content Include="Views\Resources\Details.cshtml" />
-    <Content Include="Views\Resources\Edit.cshtml" />
-    <Content Include="Views\Resources\Index.cshtml" />
-    <Content Include="Views\Tasks\Create.cshtml" />
-    <Content Include="Views\Tasks\Delete.cshtml" />
-    <Content Include="Views\Tasks\Details.cshtml" />
-    <Content Include="Views\Tasks\Edit.cshtml" />
-    <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.json" />
@@ -510,11 +489,6 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Shared\_TinyMcePartial.cshtml" />
     <Content Include="Views\Shared\_DatePickerPartial.cshtml" />
-    <Content Include="Views\Projects\Create.cshtml" />
-    <Content Include="Views\Projects\Delete.cshtml" />
-    <Content Include="Views\Projects\Details.cshtml" />
-    <Content Include="Views\Projects\Edit.cshtml" />
-    <Content Include="Views\Projects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

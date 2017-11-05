@@ -68,24 +68,13 @@
   <ItemGroup>
     <Compile Include="Contexts\DataContext.cs" />
     <Compile Include="Contexts\Session.cs" />
-    <Compile Include="Mappings\ProjectMapping.cs" />
-    <Compile Include="Mappings\TaskStatusMapping.cs" />
-    <Compile Include="Mappings\TaskStatusTransitionMapping.cs" />
-    <Compile Include="Mappings\TaskTypeMapping.cs" />
+    <Compile Include="Mappings\AccountTransactionMapping.cs" />
+    <Compile Include="Mappings\AccountMapping.cs" />
     <Compile Include="Mappings\UserMapping.cs" />
-    <Compile Include="Mappings\ResourceMapping.cs" />
-    <Compile Include="Mappings\ResourceMeasureUnitMapping.cs" />
-    <Compile Include="Mappings\TaskMapping.cs" />
-    <Compile Include="Mappings\TaskResourceMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ResourceMeasureUnitRepository.cs" />
-    <Compile Include="Repositories\ProjectRepository.cs" />
-    <Compile Include="Repositories\TaskResourceRepository.cs" />
-    <Compile Include="Repositories\TaskStatusRepository.cs" />
-    <Compile Include="Repositories\TaskTypeRepository.cs" />
+    <Compile Include="Repositories\AccountTransactionRepository.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="Repositories\ResourceRepository.cs" />
-    <Compile Include="Repositories\TaskRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
