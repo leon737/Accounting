@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
+using AutoMapper;
 using Functional.Fluent;
 using Functional.Fluent.Extensions;
 using Functional.Fluent.Helpers;
@@ -8,16 +8,21 @@ using Functional.Fluent.MonadicTypes;
 using Cash.DataAccess.Contexts;
 using Cash.Domain.Models;
 using Cash.Domain.Repositories;
+using Cash.Domain.Requests;
 
 namespace Cash.DataAccess.Repositories
 {
     public class AccountRepository : IAccountRepository
     {
         private readonly DataContext _context;
+        private readonly IAccountTransactionRepository _accountTransactionRepository;
+        private readonly IMapper _mapper;
 
-        public AccountRepository(DataContext context)
+        public AccountRepository(DataContext context, IAccountTransactionRepository accountTransactionRepository, IMapper mapper)
         {
             _context = context;
+            _accountTransactionRepository = accountTransactionRepository;
+            _mapper = mapper;
         }
 
         public Result<Account> ById(Guid id)
@@ -25,14 +30,17 @@ namespace Cash.DataAccess.Repositories
             return Result.SuccessIfNotNull(_context.Accounts.Find(id));
         }
 
-        public IQueryable<Account> All()
+        public IQueryable<Account> All(Guid chartId)
         {
-            return _context.Accounts.AsQueryable();
+            return _context.Accounts.Where(x => x.ChartId == chartId);
         }
 
-        public Result<Account> Add(Account account)
+        public Result<Account> Add(CreateAccountRequest request, Guid principal)
         {
-            account.CreatedOn = DateTime.Now;
+            var account = _mapper.Map<Account>(request);
+            account.Id = Guid.NewGuid();
+            account.CreatedOn = DateTime.UtcNow;
+            account.CreatedBy = principal;
             _context.Accounts.Add(account);
             return Result.Success(account);
         }
@@ -41,22 +49,46 @@ namespace Cash.DataAccess.Repositories
         {
             return ById(id).Success(v =>
             {
-                if (v.Transactions.Any()) return Result.Fail<Unit>();
+                var transactions = _accountTransactionRepository.All(v.Id);
+
+                if (transactions.Any()) return Result.Fail<Unit>();
 
                 _context.Accounts.Remove(v);
                 return Result.Success();
             });
         }
-
-        public Result<Account> Update(Account account)
+        
+        public Result<Account> UpdateInfo(Guid id, UpdateAccountInfoRequest request, Guid principal)
         {
-            _context.Entry(account).State = EntityState.Modified;
-            _context.Entry(account).Property(x => x.CreatedOn).IsModified = false;
-            _context.Entry(account).Property(x => x.CreatedBy).IsModified = false;
-            _context.Entry(account).Property(x => x.AccountType).IsModified = false;
-            _context.Entry(account).Property(x => x.Transactions).IsModified = false;
-            _context.Entry(account).Property(x => x.Balance).IsModified = false;
-            return Result.Success(account);
+            return ById(id).Success(v =>
+            {
+                _mapper.Map(request, v);
+                v.ModifiedOn = DateTime.UtcNow;
+                v.ModifiedBy = principal;
+                return Result.Success(v);
+            });
+        }
+
+        public Result<Account> Lock(Guid id, bool locked, Guid principal)
+        {
+            return ById(id).Success(v =>
+            {
+                v.Locked = locked;
+                v.ModifiedOn = DateTime.UtcNow;
+                v.ModifiedBy = principal;
+                return Result.Success(v);
+            });
+        }
+
+        public Result<Account> UpdateBalance(Guid id, decimal amount, Guid principal)
+        {
+            return ById(id).Success(v =>
+            {
+                v.Balance += amount;
+                v.LastUpdatedOn = DateTime.UtcNow;
+                v.LastUpdatedBy = principal;
+                return Result.Success(v);
+            });
         }
     }
 }

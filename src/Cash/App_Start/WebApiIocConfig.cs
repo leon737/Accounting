@@ -9,8 +9,8 @@ namespace Cash.Web
         public static void Configure(HttpConfiguration configuration)
         {
             var builder = new ContainerBuilder();
-            builder.RegisterAssemblyModules(typeof(MvcApplication).Assembly);
-            builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterAssemblyModules(typeof(WebApiIocConfig).Assembly);
+            builder.RegisterApiControllers(typeof(WebApiIocConfig).Assembly);
             builder.RegisterWebApiFilterProvider(configuration);
             builder.RegisterWebApiModelBinderProvider();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using AutoMapper;
 using Functional.Fluent;
 using Functional.Fluent.Extensions;
 using Functional.Fluent.Helpers;
@@ -7,16 +8,19 @@ using Functional.Fluent.MonadicTypes;
 using Cash.DataAccess.Contexts;
 using Cash.Domain.Models;
 using Cash.Domain.Repositories;
+using Cash.Domain.Requests;
 
 namespace Cash.DataAccess.Repositories
 {
     public class AccountTransactionRepository : IAccountTransactionRepository
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public AccountTransactionRepository(DataContext context)
+        public AccountTransactionRepository(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public Result<AccountTransaction> ById(Guid id)
@@ -26,12 +30,14 @@ namespace Cash.DataAccess.Repositories
 
         public IQueryable<AccountTransaction> All(Guid accountId)
         {
-            return _context.AccountTransactions.Where(x => x.Debit == accountId || x.Credit == accountId).AsQueryable();
+            return _context.AccountTransactions.Where(x => x.DebitAccountId == accountId || x.CreditAccountId == accountId).AsQueryable();
         }
 
-        public Result<AccountTransaction> Add(AccountTransaction accountTransaction)
+        public Result<AccountTransaction> Add(CreateAccountTransactionRequest request)
         {
-            accountTransaction.CreatedOn = DateTime.Now;
+            var accountTransaction = _mapper.Map<AccountTransaction>(request);
+            accountTransaction.Id = Guid.NewGuid();
+            accountTransaction.CreatedOn = DateTime.UtcNow;
             _context.AccountTransactions.Add(accountTransaction);
             return Result.Success(accountTransaction);
         }

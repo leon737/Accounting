@@ -31,12 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Functional.Fluent, Version=1.3.6.42791, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Functional.Fluent.1.3.6\lib\net45\Functional.Fluent.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,13 +53,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\DomainModule.cs" />
     <Compile Include="Contexts\ISession.cs" />
     <Compile Include="Helpers\Transliteration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountTransaction.cs" />
     <Compile Include="Models\AccountType.cs" />
+    <Compile Include="Models\Chart.cs" />
+    <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\EntityWithFullStatisticalData.cs" />
+    <Compile Include="Models\EntityWithStatisticalData.cs" />
+    <Compile Include="Requests\CreateAccountRequest.cs" />
+    <Compile Include="Requests\CreateAccountTransactionRequest.cs" />
+    <Compile Include="Requests\CreateChartRequest.cs" />
+    <Compile Include="Requests\CreateCurrencyRequest.cs" />
+    <Compile Include="Requests\UpdateCurrencyInfoRequest.cs" />
+    <Compile Include="Requests\UpdateChartInfoRequest.cs" />
+    <Compile Include="Requests\UpdateAccountInfoRequest.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICurrencyRepository.cs" />
+    <Compile Include="Repositories\IChartRepository.cs" />
     <Compile Include="Repositories\IAccountRepository.cs" />
     <Compile Include="Repositories\IAccountTransactionRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />

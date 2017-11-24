@@ -11,6 +11,10 @@ namespace Cash.DataAccess.Contexts
             Database.SetInitializer<DataContext>(null);
         }
 
+        public DbSet<Chart> Charts { get; set; }
+
+        public DbSet<Currency> Currencies { get; set; }
+
         public DbSet<Account> Accounts { get; set; }
 
         public DbSet<AccountTransaction> AccountTransactions { get; set; }
