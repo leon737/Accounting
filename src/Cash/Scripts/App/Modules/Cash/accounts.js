@@ -74,7 +74,7 @@
                             if (e.dataField == 'description') e.editorName = 'dxTextArea';
                             if (e.dataField == 'type' || e.dataField == 'currencyId') {
                                 if (!!e.row) {
-                                    if (e.row.data.hasTransactions) {
+                                    if (e.row.data.hasTransactions || e.row.data.balance != 0) {
                                         e.editorOptions.disabled = true;
                                     }
                                 }

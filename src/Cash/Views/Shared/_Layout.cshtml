@@ -29,6 +29,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Планы счетов", "Index", "Chart", new {area="Cash"}, null)</li>
+                <li>@Html.ActionLink("Валюты", "Index", "Currency", new { area = "Cash" }, null)</li>
                 @if (ViewBag.Project != null)
                 {
                     <li>@Html.ActionLink("Счета", "Index", "Account", new { area="Cash", chart = ViewBag.Chart.Id}, null)</li>

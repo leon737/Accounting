@@ -1,0 +1,18 @@
+﻿@using Cash.Web.Extensions
+
+@{
+    ViewBag.Title = "Валюты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div data-bind="dxDataGrid:currencies">
+</div>
+
+
+@section scripts
+{
+    @Html.RequireJs("Cash/currency")
+}

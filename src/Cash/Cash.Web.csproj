@@ -239,6 +239,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\WebApiIocConfig.cs" />
     <Compile Include="Areas\Cash\CashAreaRegistration.cs" />
+    <Compile Include="Areas\Cash\Controllers\CurrencyController.cs" />
     <Compile Include="Areas\Cash\Controllers\CurrencyApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\ChartApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\AccountApiController.cs" />
@@ -352,6 +353,7 @@
     <Content Include="Scripts\App\application.js" />
     <Content Include="Scripts\App\config.js" />
     <Content Include="Scripts\App\Modules\Cash\accounts.js" />
+    <Content Include="Scripts\App\Modules\Cash\currency.js" />
     <Content Include="Scripts\App\Modules\Cash\chart.js" />
     <Content Include="Scripts\aspnet\dx.aspnet.data.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -375,6 +377,7 @@
     <Content Include="Content\icons\dxicons.woff" />
     <Content Include="Content\icons\dxicons.ttf" />
     <Content Include="Areas\Cash\Views\Chart\Show.cshtml" />
+    <Content Include="Areas\Cash\Views\Currency\Index.cshtml" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\devextreme-localization\dx.messages.de.js" />

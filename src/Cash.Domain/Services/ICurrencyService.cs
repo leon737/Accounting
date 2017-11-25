@@ -11,12 +11,12 @@ namespace Cash.Domain.Services
     {
         IQueryable<Currency> All();
 
-        //IResult UpdateChart(Guid chartId, UpdateChartInfoRequest request, Guid principal);
+        IResult UpdateCurrency(Guid currencyId, UpdateCurrencyInfoRequest request, Guid principal);
 
-        //Result<Chart> ById(Guid chartId);
+        Result<Currency> ById(Guid currencyId);
 
-        //IResult CreateChart(CreateChartRequest request, Guid principal);
+        IResult CreateCurrency(CreateCurrencyRequest request, Guid principal);
 
-        //IResult DeleteChart(Guid chartId);
+        IResult DeleteCurrency(Guid currencyId);
     }
 }

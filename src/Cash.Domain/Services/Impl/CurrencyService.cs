@@ -27,36 +27,36 @@ namespace Cash.Domain.Services.Impl
             return _currencyRepository.All();
         }
 
-        //public IResult UpdateChart(Guid chartId, UpdateChartInfoRequest request, Guid principal)
-        //{
-        //    return _chartRepository.UpdateInfo(chartId, request, principal).Success(() =>
-        //    {
-        //        _session.SaveChanges();
-        //        return Result.Success();
-        //    });
-        //}
+        public IResult UpdateCurrency(Guid currencyId, UpdateCurrencyInfoRequest request, Guid principal)
+        {
+            return _currencyRepository.UpdateInfo(currencyId, request, principal).Success(() =>
+            {
+                _session.SaveChanges();
+                return Result.Success();
+            });
+        }
 
-        //public Result<Chart> ById(Guid chartId)
-        //{
-        //    return _chartRepository.ById(chartId);
-        //}
+        public Result<Currency> ById(Guid currencyId)
+        {
+            return _currencyRepository.ById(currencyId);
+        }
 
-        //public IResult CreateChart(CreateChartRequest request, Guid principal)
-        //{
-        //    return _chartRepository.Add(request, principal).Success(() =>
-        //    {
-        //        _session.SaveChanges();
-        //        return Result.Success();
-        //    });
-        //}
+        public IResult CreateCurrency(CreateCurrencyRequest request, Guid principal)
+        {
+            return _currencyRepository.Add(request, principal).Success(() =>
+            {
+                _session.SaveChanges();
+                return Result.Success();
+            });
+        }
 
-        //public IResult DeleteChart(Guid chartId)
-        //{
-        //    return _chartRepository.Remove(chartId).Success(() =>
-        //    {
-        //        _session.SaveChanges();
-        //        return Result.Success();
-        //    });
-        //}
+        public IResult DeleteCurrency(Guid currencyId)
+        {
+            return _currencyRepository.Remove(currencyId).Success(() =>
+            {
+                _session.SaveChanges();
+                return Result.Success();
+            });
+        }
     }
 }

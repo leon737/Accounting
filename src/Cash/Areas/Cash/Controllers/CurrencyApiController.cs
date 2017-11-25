@@ -1,6 +1,5 @@
 ﻿using System.Web.Http;
 using AutoMapper;
-using Cash.Web.Models;
 using Cash.Domain.Models;
 using Cash.Domain.Requests;
 using Cash.Domain.Services;
@@ -14,7 +13,7 @@ namespace Cash.Web.Areas.Cash.Controllers
     public class CurrencyApiController : GridApiControllerBase<Currency, CurrencyViewModel, UpdateCurrencyInfoRequest, CreateCurrencyRequest>
     {
         public CurrencyApiController(IMapper mapper, ICurrencyService currencyService) 
-            : base(mapper, currencyService.All, null, null, null, null)
+            : base(mapper, currencyService.All, currencyService.ById, currencyService.UpdateCurrency, currencyService.CreateCurrency, currencyService.DeleteCurrency)
         {
         }
     }
