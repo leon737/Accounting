@@ -77,6 +77,8 @@
     <Compile Include="Repositories\IAccountRepository.cs" />
     <Compile Include="Repositories\IAccountTransactionRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\Impl\ChartService.cs" />
+    <Compile Include="Services\IChartService.cs" />
     <Compile Include="Services\Impl\TransliterationService.cs" />
     <Compile Include="Services\ITransliterationService.cs" />
   </ItemGroup>

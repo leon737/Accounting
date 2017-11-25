@@ -28,11 +28,12 @@ namespace Cash.Web
                       "~/Content/site.css",
                       "~/Content/themes/base/jquery-ui.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
-                        "~/Scripts/Custom/*.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/ko").Include(
                         "~/Scripts/knockout-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/require").Include(
+                        "~/Scripts/App/config.js",
+                       "~/Scripts/require.js"));
         }
     }
 }

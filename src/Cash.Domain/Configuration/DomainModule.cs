@@ -10,6 +10,7 @@ namespace Cash.Domain.Configuration
         {
             // services
             builder.RegisterType<TransliterationService>().As<ITransliterationService>();
+            builder.RegisterType<ChartService>().As<IChartService>();
         }
     }
 }
