@@ -11,6 +11,8 @@ namespace Cash.Domain.Configuration
             // services
             builder.RegisterType<TransliterationService>().As<ITransliterationService>();
             builder.RegisterType<ChartService>().As<IChartService>();
+            builder.RegisterType<AccountService>().As<IAccountService>();
+            builder.RegisterType<CurrencyService>().As<ICurrencyService>();
         }
     }
 }

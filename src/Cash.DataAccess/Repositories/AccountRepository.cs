@@ -62,18 +62,18 @@ namespace Cash.DataAccess.Repositories
         {
             return ById(id).Success(v =>
             {
-                _mapper.Map(request, v);
+                _mapper.Map(_mapper.Map<UpdateAccountInfoRequest>(request), v);
                 v.ModifiedOn = DateTime.UtcNow;
                 v.ModifiedBy = principal;
                 return Result.Success(v);
             });
         }
 
-        public Result<Account> Lock(Guid id, bool locked, Guid principal)
+        public Result<Account> UpdateInfo(Guid id, UpdateAccountRequest request, Guid principal)
         {
             return ById(id).Success(v =>
             {
-                v.Locked = locked;
+                _mapper.Map(request, v);
                 v.ModifiedOn = DateTime.UtcNow;
                 v.ModifiedBy = principal;
                 return Result.Success(v);

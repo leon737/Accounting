@@ -18,6 +18,10 @@ namespace Cash.DataAccess.Configuration
 
             CreateMap<UpdateAccountInfoRequest, Account>();
 
+            CreateMap<UpdateAccountRequest, Account>();
+
+            CreateMap<UpdateAccountRequest, UpdateAccountInfoRequest>();
+
             CreateMap<CreateAccountRequest, Account>();
 
             CreateMap<CreateAccountTransactionRequest, AccountTransaction>();

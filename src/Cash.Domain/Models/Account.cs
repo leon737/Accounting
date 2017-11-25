@@ -21,7 +21,7 @@ namespace Cash.Domain.Models
 
         public int Code { get; set; }
 
-        public AccountType AccountType { get; set; }
+        public AccountType Type { get; set; }
 
         public Guid CurrencyId { get; set; }
 
@@ -38,5 +38,9 @@ namespace Cash.Domain.Models
         public virtual User LastUpdateByUser { get; set; }
 
         public virtual ICollection<Account> ChildAccounts { get; set; }
+
+        public virtual ICollection<AccountTransaction> CreditAccountTransactions { get; set; }
+
+        public virtual ICollection<AccountTransaction> DebitAccountTransactions { get; set; }
     }
 }

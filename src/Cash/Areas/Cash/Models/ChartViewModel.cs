@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cash.Web.Models
+namespace Cash.Web.Areas.Cash.Models
 {
     public class ChartViewModel
     {

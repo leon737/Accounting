@@ -5,6 +5,7 @@ using Cash.Domain.Models;
 using Cash.Domain.Requests;
 using Cash.Domain.Services;
 using Cash.Web.ApiLibrary;
+using Cash.Web.Areas.Cash.Models;
 
 namespace Cash.Web.Areas.Cash.Controllers
 {

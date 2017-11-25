@@ -67,6 +67,7 @@
     <Compile Include="Requests\CreateAccountTransactionRequest.cs" />
     <Compile Include="Requests\CreateChartRequest.cs" />
     <Compile Include="Requests\CreateCurrencyRequest.cs" />
+    <Compile Include="Requests\UpdateAccountRequest.cs" />
     <Compile Include="Requests\UpdateCurrencyInfoRequest.cs" />
     <Compile Include="Requests\UpdateChartInfoRequest.cs" />
     <Compile Include="Requests\UpdateAccountInfoRequest.cs" />
@@ -77,6 +78,10 @@
     <Compile Include="Repositories\IAccountRepository.cs" />
     <Compile Include="Repositories\IAccountTransactionRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\IAccountService.cs" />
+    <Compile Include="Services\ICurrencyService.cs" />
+    <Compile Include="Services\Impl\AccountService.cs" />
+    <Compile Include="Services\Impl\CurrencyService.cs" />
     <Compile Include="Services\Impl\ChartService.cs" />
     <Compile Include="Services\IChartService.cs" />
     <Compile Include="Services\Impl\TransliterationService.cs" />

@@ -7,5 +7,7 @@
         public string Description { get; set; }
 
         public int Code { get; set; }
+
+        public bool Locked { get; set; }
     }
 }

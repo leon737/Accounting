@@ -19,7 +19,7 @@ namespace Cash.Domain.Repositories
 
         Result<Account> UpdateInfo(Guid id, UpdateAccountInfoRequest request, Guid principal);
 
-        Result<Account> Lock(Guid id, bool locked, Guid principal);
+        Result<Account> UpdateInfo(Guid id, UpdateAccountRequest request, Guid principal);
 
         Result<Account> UpdateBalance(Guid id, decimal amount, Guid principal);
     }

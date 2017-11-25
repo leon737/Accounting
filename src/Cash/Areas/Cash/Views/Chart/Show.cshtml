@@ -1,0 +1,24 @@
+﻿@using Cash.Web.Extensions
+
+@{
+    ViewBag.Title = "План счетов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div data-bind="dxTreeList:accounts">
+    <div data-options="dxTemplate:{name:'chartSelectorTemplate'}">
+        <div data-bind="dxSelectBox:$root.chartSelector"></div>
+    </div>
+    @*<div data-options="dxTemplate:{name:'nameCellTemplate'}">
+        <a data-bind="attr:{href:'/Cash/Chart/' + $data.row.key}"><span data-bind="text:$data.value"></span></a>
+    </div>*@
+</div>
+
+<input type="hidden" id="chartid" value="@ViewBag.Id"/>
+
+@section scripts
+{
+    @Html.RequireJs("Cash/accounts")
+}
