@@ -6,21 +6,23 @@
                 var viewModel = function() {
                     var self = this;
 
-                    self.dataGridOptions = {
-                        dataSource: DevExpress.data.AspNet.createStore({
-                            key: "id",
-                            loadUrl: "/api/chart",
-                            updateUrl: "/api/chart",
-                            insertUrl: "/api/chart",
-                            deleteUrl: "/api/chart"
-                        }),
+                    self.chartGrid = {
+                        dataSource: app.createStore("/api/chart"),
                         editing: {
                             allowAdding: true,
                             allowUpdating: true,
                             allowDeleting: true
                         },
+                        filterRow: {
+                            visible: true,
+                            applyFilter: "auto"
+                        },
                         columns: [
-                            'name', 'description'
+                            'name', 'description', 
+                            { dataField: 'createdOn', dataType: 'datetime', allowEditing: false },
+                            { dataField: 'createdBy', allowEditing: false},
+                            { dataField: 'modifiedOn', dataType: 'datetime', allowEditing: false },
+                            { dataField: 'modifiedBy', allowEditing: false }
                         ]
                     };
                 };

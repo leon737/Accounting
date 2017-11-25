@@ -4,9 +4,9 @@ create table cash."Chart"
 "Name"					text			not null,
 "Description"			text			null,
 "CreatedOn"				timestamp		not null,
-"CreatedBy"				uuid			not null,
+"CreatedBy"				text			not null,
 "ModifiedOn"			timestamp		null,
-"ModifiedBy"			uuid			null
+"ModifiedBy"			text			null
 );
 
 create table cash."Currency"
@@ -15,9 +15,9 @@ create table cash."Currency"
 "Name"					text			not null,
 "Code"					text			not null,
 "CreatedOn"				timestamp		not null,
-"CreatedBy"				uuid			not null,
+"CreatedBy"				text			not null,
 "ModifiedOn"			timestamp		null,
-"ModifiedBy"			uuid			null
+"ModifiedBy"			text			null
 );
 
 
@@ -34,11 +34,11 @@ create table cash."Account"
 "Balance"				decimal(19, 4)	not null check(("Type" = 1 and "Balance" >= 0.0) or ("Type" = 2 and "Balance" <= 0.0) or "Type" = 3),
 "Locked"				bool			not null,
 "CreatedOn"				timestamp		not null,
-"CreatedBy"				uuid			not null,
+"CreatedBy"				text			not null,
 "ModifiedOn"			timestamp		null,
-"ModifiedBy"			uuid			null,
+"ModifiedBy"			text			null,
 "LastUpdatedOn"			timestamp		null,
-"LastUpdatedBy"			uuid			null,
+"LastUpdatedBy"			text			null,
 unique("ChartId", "ParentAccountId", "Code")
 );
 
@@ -54,7 +54,7 @@ create table cash."Transaction"
 "CurrencyRate"			decimal(19,9)	not null,
 "Remark"				text			not null,
 "CreatedOn"				timestamp		not null,
-"CreatedBy"				uuid			not null
+"CreatedBy"				text			not null
 );
 
 

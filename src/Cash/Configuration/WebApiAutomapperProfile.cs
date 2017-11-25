@@ -9,7 +9,9 @@ namespace Cash.Web.Configuration
     {
         public WebApiAutomapperProfile()
         {
-            CreateMap<Chart, ChartViewModel>();
+            CreateMap<Chart, ChartViewModel>()
+                .ForMember(m => m.CreatedBy, c => c.MapFrom(v => v.CreatedByUser.UserName))
+                .ForMember(m => m.ModifiedBy, c => c.MapFrom(v => v.ModifiedByUser.UserName));
 
             CreateMap<ChartViewModel, UpdateChartInfoRequest>();
 
