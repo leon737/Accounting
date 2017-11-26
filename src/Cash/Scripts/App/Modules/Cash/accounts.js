@@ -28,7 +28,8 @@
                                 dataField: 'name',
                                 validationRules: [
                                     { type: 'required' }
-                                ]
+                                ],
+                                cellTemplate: 'nameCellTemplate'
                             },
                             {
                                 dataField: 'description',

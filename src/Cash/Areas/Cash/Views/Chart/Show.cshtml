@@ -11,9 +11,9 @@
     <div data-options="dxTemplate:{name:'chartSelectorTemplate'}">
         <div data-bind="dxSelectBox:$root.chartSelector"></div>
     </div>
-    @*<div data-options="dxTemplate:{name:'nameCellTemplate'}">
-        <a data-bind="attr:{href:'/Cash/Chart/' + $data.row.key}"><span data-bind="text:$data.value"></span></a>
-    </div>*@
+    <div data-options="dxTemplate:{name:'nameCellTemplate'}">
+        <a data-bind="attr:{href:'/Cash/Account/' + $data.row.key}"><span data-bind="text:$data.value"></span></a>
+    </div>
 </div>
 
 <input type="hidden" id="chartid" value="@ViewBag.Id"/>
