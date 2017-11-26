@@ -13,6 +13,7 @@ using DevExtreme.AspNet.Data;
 using Functional.Fluent;
 using Functional.Fluent.MonadicTypes;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Cash.Web.ApiLibrary
 {
@@ -58,12 +59,18 @@ namespace Cash.Web.ApiLibrary
                 : Request.CreateErrorResponse(HttpStatusCode.NotFound, "Not found");
         }
 
-        protected HttpResponseMessage Post(Func<TCreateRequest, Guid, IResult> insertFunc, FormDataCollection form, ClaimsPrincipal principal)
+        protected HttpResponseMessage Post(Func<TCreateRequest, Guid, IResult> insertFunc, FormDataCollection form, ClaimsPrincipal principal, EventHandler<ErrorEventArgs> jsonDeserializationErrorHandler = null)
         {
             var values = form.Get("values");
 
             var model = new TViewModel();
-            JsonConvert.PopulateObject(values, model);
+
+            var settings = new JsonSerializerSettings
+            {
+                Error = jsonDeserializationErrorHandler
+            };
+
+            JsonConvert.PopulateObject(values, model, settings);
 
             Validate(model);
             if (!ModelState.IsValid)

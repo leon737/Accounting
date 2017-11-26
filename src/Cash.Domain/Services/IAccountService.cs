@@ -17,8 +17,8 @@ namespace Cash.Domain.Services
 
         Result<Account> ById(Guid accountId);
 
-        //IResult CreateChart(CreateChartRequest request, Guid principal);
+        IResult CreateAccount(CreateAccountRequest request, Guid principal, Guid chartId);
 
-        //IResult DeleteChart(Guid chartId);
+        IResult DeleteAccount(Guid accountId);
     }
 }

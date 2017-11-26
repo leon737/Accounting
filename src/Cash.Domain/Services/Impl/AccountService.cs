@@ -54,22 +54,23 @@ namespace Cash.Domain.Services.Impl
             return _accountRepository.ById(accountId);
         }
 
-        //public IResult CreateChart(CreateChartRequest request, Guid principal)
-        //{
-        //    return _chartRepository.Add(request, principal).Success(() =>
-        //    {
-        //        _session.SaveChanges();
-        //        return Result.Success();
-        //    });
-        //}
+        public IResult CreateAccount(CreateAccountRequest request, Guid principal, Guid chartId)
+        {
+            request.ChartId = chartId;
+            return _accountRepository.Add(request, principal).Success(() =>
+            {
+                _session.SaveChanges();
+                return Result.Success();
+            });
+        }
 
-        //public IResult DeleteChart(Guid chartId)
-        //{
-        //    return _chartRepository.Remove(chartId).Success(() =>
-        //    {
-        //        _session.SaveChanges();
-        //        return Result.Success();
-        //    });
-        //}
+        public IResult DeleteAccount(Guid accountId)
+        {
+            return _accountRepository.Remove(accountId).Success(() =>
+            {
+                _session.SaveChanges();
+                return Result.Success();
+            });
+        }
     }
 }

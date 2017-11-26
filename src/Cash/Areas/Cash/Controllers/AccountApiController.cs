@@ -15,6 +15,10 @@ using Cash.Web.ApiLibrary;
 using Cash.Web.Areas.Cash.Models;
 using Cash.Web.Binders;
 using Cash.Web.ModelBinders;
+using Functional.Fluent;
+using Functional.Fluent.Extensions;
+using Functional.Fluent.Helpers;
+using Newtonsoft.Json.Serialization;
 
 namespace Cash.Web.Areas.Cash.Controllers
 {
@@ -40,5 +44,24 @@ namespace Cash.Web.Areas.Cash.Controllers
         {
             return Put(_accountService.ById, _accountService.UpdateAccount, form, principal);
         }
+
+        [HttpPost]
+        public HttpResponseMessage Post(FormDataCollection form, [ModelBinder(typeof(PrincipalModelBinder))] ClaimsPrincipal principal, Guid id)
+        {
+            return Post(Funcs.F<CreateAccountRequest, Guid, Guid, IResult>(_accountService.CreateAccount).RPartial(id), form, principal, HanldeDeserializationErrors);
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(FormDataCollection form)
+        {
+            return Delete(_accountService.DeleteAccount, form);
+        }
+
+        private void HanldeDeserializationErrors(object sender, ErrorEventArgs errorArgs)
+        {
+            if ((string) errorArgs.ErrorContext.Member == "parentAccountId")
+                errorArgs.ErrorContext.Handled = true;
+        }
+
     }
 }

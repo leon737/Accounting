@@ -24,12 +24,24 @@
                         },
                         columnAutoWidth: true,
                         columns: [
-                            'name',
+                            {
+                                dataField: 'name',
+                                validationRules: [
+                                    { type: 'required' }
+                                ]
+                            },
                             {
                                 dataField: 'description',
                                 visible: false
                             },
-                            'code',
+                            {
+                                dataField: 'code',
+                                dataType: 'numeric',
+                                validationRules: [
+                                    { type: 'required' },
+                                    { type: 'range', min: 1, max: 999 }
+                                ]
+                            },
                             {
                                 dataField: 'type',
                                 dataType: 'number',
@@ -47,7 +59,10 @@
                                     },
                                     valueExpr: 'id',
                                     displayExpr: 'name'
-                                }
+                                },
+                                validationRules: [
+                                    { type: 'required' }
+                                ]
                             },
                             {
                                 dataField: 'currencyId',
@@ -59,12 +74,18 @@
                                     }),
                                     valueExpr: "id",
                                     displayExpr: "name"
-                                }
+                                },
+                                validationRules: [
+                                    { type: 'required' }
+                                ]
                             },
                             { dataField: 'balance', allowEditing: false },
-                            { dataField: 'locked', trueText: 'Заблокирован', falseText: 'Разблокирован' },
+                            {
+                                dataField: 'locked', trueText: 'Заблокирован', falseText: 'Разблокирован'
+                          
+                            },
                             { dataField: 'createdOn', dataType: 'datetime', allowEditing: false },
-                            { dataField: 'createdBy',allowEditing: false },
+                            { dataField: 'createdBy', allowEditing: false },
                             { dataField: 'modifiedOn', dataType: 'datetime', allowEditing: false },
                             { dataField: 'modifiedBy', allowEditing: false },
                             { dataField: 'lastUpdatedOn', dataType: 'datetime', allowEditing: false },
@@ -72,15 +93,21 @@
                         ],
                         onEditorPreparing: function (e) {
                             if (e.dataField == 'description') e.editorName = 'dxTextArea';
+                            if (e.dataField == 'code') {
+                                e.editorName = 'dxNumberBox';
+                                e.editorOptions.min = 1;
+                                e.editorOptions.max = 999;
+                                e.editorOptions.format = '##0';
+                            }
                             if (e.dataField == 'type' || e.dataField == 'currencyId') {
                                 if (!!e.row) {
-                                    if (e.row.data.hasTransactions || e.row.data.balance != 0) {
+                                    if (!!e.row.data.hasTransactions || (!!e.row.balance && e.row.data.balance != 0)) {
                                         e.editorOptions.disabled = true;
                                     }
                                 }
                             }
                         },
-                        onToolbarPreparing: function(e) {
+                        onToolbarPreparing: function (e) {
                             e.toolbarOptions.items.unshift(
                             {
                                 location: 'before',
