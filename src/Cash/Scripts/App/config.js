@@ -2,6 +2,7 @@
 {
     baseUrl: '/Scripts/App',
     paths: {
-        domReady: "../domReady"
+        domReady: "../domReady",
+        lodash: "../lodash"
     }
 };

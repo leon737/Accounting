@@ -5,14 +5,16 @@
             bindModel: function(model) {
                 ko.applyBindings(new model());
             },
-            createStore: function(url) {
-                return DevExpress.data.AspNet.createStore({
-                    key: "id",
-                    loadUrl: url,
-                    updateUrl: url,
-                    insertUrl: url,
-                    deleteUrl:url
-                });
+
+            getParentId: function () {
+                return $("#parentid").val();
             }
         };
     });
+
+
+//var instance = new appModel();
+//letBinding.init();
+//var ctx = new ko.bindingContext(instance);
+//ctx["$model"] = instance.pageModel;
+//ko.applyBindings(ctx, document.getElementById("scope"))

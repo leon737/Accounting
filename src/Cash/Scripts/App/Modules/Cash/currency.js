@@ -1,5 +1,5 @@
-﻿define(["application"],
-    function (app) {
+﻿define(["application", "stores", "urls"],
+    function (app, storeFactory, urls) {
         return {
             run: function() {
 
@@ -7,7 +7,7 @@
                     var self = this;
 
                     self.currencies = {
-                        dataSource: app.createStore("/api/currency"),
+                        dataSource: storeFactory.createApiStore(urls.currency.api),
                         editing: {
                             allowAdding: true,
                             allowUpdating: true,
@@ -23,7 +23,7 @@
                                 dataField: 'name'
                             }, 
                             {
-                                dataField: 'code',
+                                dataField: 'code'
                             },
                             { dataField: 'createdOn', dataType: 'datetime', allowEditing: false },
                             { dataField: 'createdBy', allowEditing: false},

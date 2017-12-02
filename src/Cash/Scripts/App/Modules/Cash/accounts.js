@@ -1,5 +1,5 @@
-﻿define(["application"],
-    function (app) {
+﻿define(["application", "stores", "urls"],
+    function (app, storeFactory, urls) {
         return {
             run: function () {
 
@@ -9,7 +9,7 @@
                     self.chartId = ko.observable($("#chartid").val());
 
                     self.accounts = {
-                        dataSource: app.createStore("/api/account/" + self.chartId()),
+                        dataSource: storeFactory.createApiStore(urls.account.api(self.chartId())),
                         parentIdExpr: "parentAccountId",
                         //hasItemsExpr: "Has_Items"
                         editing: {
@@ -47,17 +47,12 @@
                                 dataField: 'type',
                                 dataType: 'number',
                                 lookup: {
-                                    dataSource: {
-                                        store: {
-                                            type: 'array',
-                                            data: [
+                                    dataSource: storeFactory.createArrayStore(
+                                        [
                                                 { id: 1, name: 'Активный' },
                                                 { id: 2, name: 'Пассивный' },
                                                 { id: 3, name: 'Активно/пассивный' }
-                                            ],
-                                            key: "id"
-                                        }
-                                    },
+                                        ]),
                                     valueExpr: 'id',
                                     displayExpr: 'name'
                                 },
@@ -69,10 +64,7 @@
                                 dataField: 'currencyId',
                                 caption: 'Currency',
                                 lookup: {
-                                    dataSource: DevExpress.data.AspNet.createStore({
-                                        key: "id",
-                                        loadUrl: "/api/currency"
-                                    }),
+                                    dataSource: storeFactory.createApiStore(urls.currency.api),
                                     valueExpr: "id",
                                     displayExpr: "name"
                                 },
@@ -121,15 +113,12 @@
                     };
 
                     self.chartSelector = {
-                        dataSource: DevExpress.data.AspNet.createStore({
-                            key: "id",
-                            loadUrl: "/api/chart"
-                        }),
+                        dataSource: storeFactory.createApiStore(urls.chart.api),
                         valueExpr: "id",
                         value: self.chartId,
                         displayExpr: "name",
                         onSelectionChanged: function (e) {
-                            self.accountsList.option("dataSource", app.createStore("/api/account/" + self.chartId()));
+                            self.accountsList.option("dataSource", storeFactory.createApiStore(urls.account.api(self.chartId())));
                             self.accountsList.refresh();
                         }
                     };

@@ -1,5 +1,5 @@
-﻿define(["application"],
-    function (app) {
+﻿define(["application", "lodash", "stores", "urls"],
+    function (app, _, storeFactory, urls) {
         return {
             run: function() {
 
@@ -7,7 +7,7 @@
                     var self = this;
 
                     self.charts = {
-                        dataSource: app.createStore("/api/chart"),
+                        dataSource: storeFactory.createApiStore(urls.chart.api),
                         editing: {
                             allowAdding: true,
                             allowUpdating: true,
