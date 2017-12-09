@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AutoMapper;
 using Cash.Domain.Models;
 using Cash.Domain.Requests;
 using Cash.Web.Areas.Cash.Models;
+using Cash.Web.Extensions;
 
 namespace Cash.Web.Configuration
 {
@@ -35,6 +37,14 @@ namespace Cash.Web.Configuration
             CreateMap<CurrencyViewModel, UpdateCurrencyInfoRequest>();
 
             CreateMap<CurrencyViewModel, CreateCurrencyRequest>();
+
+            CreateMap<CreateTransactionRequest, CreateAccountTransactionRequest>()
+                .ForMember(m => m.CreditAccountId, c => c.MapFrom(v => v.CreditAccount))
+                .ForMember(m => m.DebitAccountId, c => c.MapFrom(v => v.DebitAccount))
+                .ForMember(m => m.CreditAmount, c => c.MapFrom(v => v.Amount))
+                .ForMember(m => m.DebitAmount, c => c.MapFrom(v => v.Amount))
+                .ForMember(m => m.CurrencyRate, c => c.UseValue(1.0m))
+                .ForMember(m => m.Date, c => c.MapFrom(v => v.Date != null ? new DateTime().FromUnixTime(v.Date.Value) : DateTime.UtcNow));
 
         }
     }

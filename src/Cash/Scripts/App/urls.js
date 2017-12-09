@@ -9,6 +9,9 @@
         },
         "account" : {
             "api" : chartId => `${api}/account/${chartId}`
+        },
+        "transaction" : {
+            "create": `${api}/transaction/create`
         }
     };
 });

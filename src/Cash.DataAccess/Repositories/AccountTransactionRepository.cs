@@ -33,11 +33,12 @@ namespace Cash.DataAccess.Repositories
             return _context.AccountTransactions.Where(x => x.DebitAccountId == accountId || x.CreditAccountId == accountId).AsQueryable();
         }
 
-        public Result<AccountTransaction> Add(CreateAccountTransactionRequest request)
+        public Result<AccountTransaction> Add(CreateAccountTransactionRequest request, Guid principal)
         {
             var accountTransaction = _mapper.Map<AccountTransaction>(request);
             accountTransaction.Id = Guid.NewGuid();
-            accountTransaction.CreatedOn = DateTime.UtcNow;
+            accountTransaction.CreatedOn = request.Date;
+            accountTransaction.CreatedBy = principal;
             _context.AccountTransactions.Add(accountTransaction);
             return Result.Success(accountTransaction);
         }

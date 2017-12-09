@@ -241,18 +241,24 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\WebApiIocConfig.cs" />
     <Compile Include="Areas\Cash\CashAreaRegistration.cs" />
+    <Compile Include="Areas\Cash\Controllers\AccountTransactionApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\CurrencyController.cs" />
     <Compile Include="Areas\Cash\Controllers\CurrencyApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\ChartApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\AccountApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\ChartController.cs" />
     <Compile Include="Areas\Cash\Models\AccountViewModel.cs" />
+    <Compile Include="Areas\Cash\Models\CreateTransactionError.cs" />
+    <Compile Include="Areas\Cash\Models\CreateTransactionRequest.cs" />
+    <Compile Include="Areas\Cash\Models\CreateTransactionResponse.cs" />
+    <Compile Include="Areas\Cash\Models\CreateTransactionStatus.cs" />
     <Compile Include="Areas\Cash\Models\CurrencyViewModel.cs" />
     <Compile Include="Binders\DataSourceLoadOptions .cs" />
     <Compile Include="Binders\DataSourceLoadOptionsHttpBinder .cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\GridFormDataExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\ModelStateExtensions.cs" />
@@ -357,9 +363,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\App\application.js" />
     <Content Include="Scripts\App\config.js" />
+    <Content Include="Scripts\App\logger.js" />
     <Content Include="Scripts\App\Modules\Cash\accounts.js" />
+    <Content Include="Scripts\App\Modules\Cash\addNewTransactionBlock.js" />
     <Content Include="Scripts\App\Modules\Cash\currency.js" />
     <Content Include="Scripts\App\Modules\Cash\chart.js" />
+    <Content Include="Scripts\App\settings.js" />
     <Content Include="Scripts\App\stores.js" />
     <Content Include="Scripts\App\urls.js" />
     <Content Include="Scripts\aspnet\dx.aspnet.data.js" />
@@ -385,6 +394,7 @@
     <Content Include="Content\icons\dxicons.ttf" />
     <Content Include="Areas\Cash\Views\Chart\Show.cshtml" />
     <Content Include="Areas\Cash\Views\Currency\Index.cshtml" />
+    <Content Include="Areas\Cash\Views\Shared\_AddNewTransactionBlock.cshtml" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\devextreme-localization\dx.messages.de.js" />
@@ -430,6 +440,10 @@
     <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\respond.js" />
@@ -639,7 +653,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Cash\Views\Account\" />
-    <Folder Include="Areas\Cash\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

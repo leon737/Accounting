@@ -19,5 +19,7 @@ namespace Cash.Domain.Requests
         public decimal CurrencyRate { get; set; }
 
         public string Remark { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }

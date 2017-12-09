@@ -1,12 +1,14 @@
-﻿define(["application", "stores", "urls"],
-    function (app, storeFactory, urls) {
+﻿define(["application", "stores", "urls", "Modules/Cash/addNewTransactionBlock"],
+    function (app, storeFactory, urls, antb) {
         return {
             run: function () {
 
                 var viewModel = function () {
                     var self = this;
-
+                    
                     self.chartId = ko.observable($("#chartid").val());
+
+                    self.addNewTransactionBlock = new antb.model(self.chartId);
 
                     self.accounts = {
                         dataSource: storeFactory.createApiStore(urls.account.api(self.chartId())),

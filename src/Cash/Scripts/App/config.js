@@ -3,6 +3,12 @@
     baseUrl: '/Scripts/App',
     paths: {
         domReady: "../domReady",
-        lodash: "../lodash"
+        lodash: "../lodash",
+        moment: "../moment"
+    },
+    config: {
+        moment: {
+            noGlobal: true
+        }
     }
 };

@@ -13,7 +13,7 @@ namespace Cash.Domain.Repositories
 
         IQueryable<AccountTransaction> All(Guid accountId);
 
-        Result<AccountTransaction> Add(CreateAccountTransactionRequest request);
+        Result<AccountTransaction> Add(CreateAccountTransactionRequest request, Guid principal);
 
         Result<Unit> Remove(Guid id);
     }

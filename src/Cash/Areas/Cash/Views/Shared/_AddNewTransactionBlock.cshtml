@@ -1,0 +1,54 @@
+﻿<div class="container" data-bind="with:addNewTransactionBlock">
+    <div class="jumbotron" data-bind="dxValidationGroup: validationGroupOptions">
+        <h3>Новая транзакция</h3>
+        <div class="row">
+            <div class="col-md-6">
+                Кредитный счет
+            </div>
+            <div class="col-md-6">
+                Дебетовый счет
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div data-bind="dxDropDownBox:creditAccount, dxValidator: creditAccountValidator"></div>
+            </div>
+            <div class="col-md-6">
+                <div data-bind="dxDropDownBox:debitAccount, dxValidator: debitAccountValidator"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="col-md-1">
+                Сумма
+            </div>
+            <div class="col-md-2">
+                <div data-bind="dxNumberBox:amount, dxValidator: amountValidator"></div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-2">
+                Дата операции
+            </div>
+            <div class="col-md-3">
+                <div data-bind="dxDateBox:date"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="col-md-2">
+                Комментарий
+            </div>
+            <div class="col-md-10">
+                <div data-bind="dxTextArea:remark"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="col-md-12">
+                <div data-bind="dxValidationSummary"></div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 15px">
+            <div class="col-md-offset-5 col-md-12">
+                <div data-bind="dxButton:ok"></div>
+            </div>
+        </div>
+    </div>
+</div>
