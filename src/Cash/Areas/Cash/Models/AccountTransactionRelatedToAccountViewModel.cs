@@ -22,5 +22,7 @@ namespace Cash.Web.Areas.Cash.Models
 
         public string CreatedBy { get; set; }
 
+        public string Remark { get; set; }
+
     }
 }

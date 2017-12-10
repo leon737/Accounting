@@ -13,7 +13,8 @@
         },
         "transaction" : {
             "create": `${api}/transaction/create`,
-            "api": accountId => `${api}/transaction/${accountId}`
+            "api": accountId => `${api}/transaction/${accountId}`,
+            "extra": accountId => `${api}/transaction/extra/${accountId}`
         }
     };
 });

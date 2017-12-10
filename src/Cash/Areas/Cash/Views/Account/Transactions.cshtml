@@ -8,10 +8,15 @@
 <h2>@ViewBag.Title</h2>
 
 
+<div data-bind="dxChart:chartOptions"></div>
+
 <div data-bind="dxDataGrid:transactions">
     <div data-options="dxTemplate:{name:'accountSelectorTemplate'}">
         <div data-bind="dxSelectBox:$root.accountSelector"></div>
     </div>
+</div>
+
+<div data-bind="dxDataGrid:transactionsExtra">
 </div>
 
 <input type="hidden" id="chartId" value="@ViewBag.ChartId" />
