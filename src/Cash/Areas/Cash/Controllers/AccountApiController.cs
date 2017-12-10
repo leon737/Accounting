@@ -33,6 +33,13 @@ namespace Cash.Web.Areas.Cash.Controllers
             _accountService = accountService;
         }
 
+        [Route("api/account/active/{id}")]
+        [HttpGet]
+        public HttpResponseMessage ListActiveAccounts(DataSourceLoadOptions loadOptions, Guid id)
+        {
+            return Get(() => _accountService.ListActiveAccounts(id), loadOptions);
+        }
+
         [HttpGet]
         public HttpResponseMessage Get(DataSourceLoadOptions loadOptions, Guid id)
         {

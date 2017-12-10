@@ -8,7 +8,7 @@
                     
                     self.chartId = ko.observable($("#chartid").val());
 
-                    self.addNewTransactionBlock = new antb.model(self.chartId);
+                    self.addNewTransactionBlock = new antb.model(self.chartId, self);
 
                     self.accounts = {
                         dataSource: storeFactory.createApiStore(urls.account.api(self.chartId())),

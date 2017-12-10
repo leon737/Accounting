@@ -33,11 +33,11 @@ namespace Cash.DataAccess.Repositories
             return _context.AccountTransactions.Where(x => x.DebitAccountId == accountId || x.CreditAccountId == accountId).AsQueryable();
         }
 
-        public Result<AccountTransaction> Add(CreateAccountTransactionRequest request, Guid principal)
+        public Result<AccountTransaction> Add(CreateAccountTransactionBalanceRequest request, Guid principal)
         {
             var accountTransaction = _mapper.Map<AccountTransaction>(request);
             accountTransaction.Id = Guid.NewGuid();
-            accountTransaction.CreatedOn = request.Date;
+            accountTransaction.CreatedOn = DateTime.UtcNow;
             accountTransaction.CreatedBy = principal;
             _context.AccountTransactions.Add(accountTransaction);
             return Result.Success(accountTransaction);
@@ -50,6 +50,13 @@ namespace Cash.DataAccess.Repositories
                 _context.AccountTransactions.Remove(v);
                 return Result.Success();
             });
+        }
+
+        public Result<AccountTransaction> LastByDate(Guid accountId)
+        {
+            return Result.SuccessIfNotNull(_context.AccountTransactions.Where(x => x.CreditAccountId == accountId || x.DebitAccountId == accountId)
+                    .OrderByDescending(x => x.Date)
+                    .FirstOrDefault());
         }
     }
 }

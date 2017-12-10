@@ -1,0 +1,24 @@
+﻿@using Cash.Web.Extensions
+
+@{
+    ViewBag.Title = "Транзакции по счету";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div data-bind="dxDataGrid:transactions">
+    <div data-options="dxTemplate:{name:'accountSelectorTemplate'}">
+        <div data-bind="dxSelectBox:$root.accountSelector"></div>
+    </div>
+</div>
+
+<input type="hidden" id="chartId" value="@ViewBag.ChartId" />
+<input type="hidden" id="accountid" value="@ViewBag.Id" />
+
+
+@section scripts
+{
+    @Html.RequireJs("Cash/transactions")
+}

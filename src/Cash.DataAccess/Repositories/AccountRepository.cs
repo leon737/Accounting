@@ -35,6 +35,11 @@ namespace Cash.DataAccess.Repositories
             return _context.Accounts.Where(x => x.ChartId == chartId);
         }
 
+        public IQueryable<Account> ListActiveAccounts(Guid chartId)
+        {
+            return _context.Accounts.Where(x => x.ChartId == chartId && !x.Locked);
+        }
+
         public Result<Account> Add(CreateAccountRequest request, Guid principal)
         {
             var account = _mapper.Map<Account>(request);
@@ -80,11 +85,11 @@ namespace Cash.DataAccess.Repositories
             });
         }
 
-        public Result<Account> UpdateBalance(Guid id, decimal amount, Guid principal)
+        public Result<Account> UpdateBalance(Guid id, decimal newBalance, Guid principal)
         {
             return ById(id).Success(v =>
             {
-                v.Balance += amount;
+                v.Balance = newBalance;
                 v.LastUpdatedOn = DateTime.UtcNow;
                 v.LastUpdatedBy = principal;
                 return Result.Success(v);

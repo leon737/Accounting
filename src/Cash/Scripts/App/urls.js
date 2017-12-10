@@ -8,10 +8,12 @@
             "api" : `${api}/currency`
         },
         "account" : {
-            "api" : chartId => `${api}/account/${chartId}`
+            "api" : chartId => `${api}/account/${chartId}`,
+            "active" : chartId => `${api}/account/active/${chartId}`,
         },
         "transaction" : {
-            "create": `${api}/transaction/create`
+            "create": `${api}/transaction/create`,
+            "api": accountId => `${api}/transaction/${accountId}`
         }
     };
 });

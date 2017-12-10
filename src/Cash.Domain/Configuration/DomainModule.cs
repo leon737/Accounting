@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using AutoMapper;
 using Cash.Domain.Services;
 using Cash.Domain.Services.Impl;
 
@@ -13,6 +14,9 @@ namespace Cash.Domain.Configuration
             builder.RegisterType<ChartService>().As<IChartService>();
             builder.RegisterType<AccountService>().As<IAccountService>();
             builder.RegisterType<CurrencyService>().As<ICurrencyService>();
+            builder.RegisterType<AccountTransactionService>().As<IAccountTransactionService>();
+
+            builder.RegisterType<MapperProfile>().As<Profile>();
         }
     }
 }

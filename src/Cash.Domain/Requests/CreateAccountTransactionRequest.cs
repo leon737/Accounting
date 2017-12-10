@@ -11,11 +11,7 @@ namespace Cash.Domain.Requests
         public decimal CreditAmount { get; set; }
 
         public decimal DebitAmount { get; set; }
-
-        public decimal CreditAmountBalance { get; set; }
-
-        public decimal DebitAmountBalance { get; set; }
-
+    
         public decimal CurrencyRate { get; set; }
 
         public string Remark { get; set; }

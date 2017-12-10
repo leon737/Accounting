@@ -242,12 +242,16 @@
     <Compile Include="App_Start\WebApiIocConfig.cs" />
     <Compile Include="Areas\Cash\CashAreaRegistration.cs" />
     <Compile Include="Areas\Cash\Controllers\AccountTransactionApiController.cs" />
+    <Compile Include="Areas\Cash\Controllers\AccountController.cs" />
     <Compile Include="Areas\Cash\Controllers\CurrencyController.cs" />
     <Compile Include="Areas\Cash\Controllers\CurrencyApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\ChartApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\AccountApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\ChartController.cs" />
+    <Compile Include="Areas\Cash\Models\AccountTransactionRelatedToAccountViewModel.cs" />
+    <Compile Include="Areas\Cash\Models\AccountTransactionViewModel.cs" />
     <Compile Include="Areas\Cash\Models\AccountViewModel.cs" />
+    <Compile Include="Areas\Cash\Models\BaseAccountRelationFrom.cs" />
     <Compile Include="Areas\Cash\Models\CreateTransactionError.cs" />
     <Compile Include="Areas\Cash\Models\CreateTransactionRequest.cs" />
     <Compile Include="Areas\Cash\Models\CreateTransactionResponse.cs" />
@@ -364,6 +368,8 @@
     <Content Include="Scripts\App\application.js" />
     <Content Include="Scripts\App\config.js" />
     <Content Include="Scripts\App\logger.js" />
+    <Content Include="Scripts\App\Modules\Cash\transactions - Copy.js" />
+    <Content Include="Scripts\App\Modules\Cash\transactions.js" />
     <Content Include="Scripts\App\Modules\Cash\accounts.js" />
     <Content Include="Scripts\App\Modules\Cash\addNewTransactionBlock.js" />
     <Content Include="Scripts\App\Modules\Cash\currency.js" />
@@ -395,6 +401,7 @@
     <Content Include="Areas\Cash\Views\Chart\Show.cshtml" />
     <Content Include="Areas\Cash\Views\Currency\Index.cshtml" />
     <Content Include="Areas\Cash\Views\Shared\_AddNewTransactionBlock.cshtml" />
+    <Content Include="Areas\Cash\Views\Account\Transactions.cshtml" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\devextreme-localization\dx.messages.de.js" />
@@ -652,7 +659,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Cash\Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -24,7 +24,7 @@ namespace Cash.DataAccess.Configuration
 
             CreateMap<CreateAccountRequest, Account>();
 
-            CreateMap<CreateAccountTransactionRequest, AccountTransaction>();
+            CreateMap<CreateAccountTransactionBalanceRequest, AccountTransaction>();
         }
 
     }

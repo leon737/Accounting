@@ -13,6 +13,8 @@ namespace Cash.Domain.Repositories
 
         IQueryable<Account> All(Guid chartId);
 
+        IQueryable<Account> ListActiveAccounts(Guid chartId);
+
         Result<Account> Add(CreateAccountRequest request, Guid principal);
 
         Result<Unit> Remove(Guid id);

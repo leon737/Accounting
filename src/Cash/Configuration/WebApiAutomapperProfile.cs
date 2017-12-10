@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using Cash.Domain.Models;
 using Cash.Domain.Requests;
+using Cash.Domain.Results;
 using Cash.Web.Areas.Cash.Models;
 using Cash.Web.Extensions;
 
@@ -46,6 +47,9 @@ namespace Cash.Web.Configuration
                 .ForMember(m => m.CurrencyRate, c => c.UseValue(1.0m))
                 .ForMember(m => m.Date, c => c.MapFrom(v => v.Date != null ? new DateTime().FromUnixTime(v.Date.Value) : DateTime.UtcNow));
 
+            CreateMap<CreateAccountTransactionResult, CreateTransactionResponse>();
+
+            CreateMap<AccountTransaction, AccountTransactionViewModel>();
         }
     }
 }

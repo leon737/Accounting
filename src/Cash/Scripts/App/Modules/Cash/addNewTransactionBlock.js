@@ -1,6 +1,6 @@
 ﻿define(["stores", "urls", "logger", "moment"], function(storeFactory, urls, log, moment) {
     return {
-        model: function (chartId) {
+        model: function (chartId, parentModel) {
             var model = this;
 
             model.data = {
@@ -51,8 +51,7 @@
                 type: "success",
                 onClick: model.submitData
             };
-
-
+            
             model.amount = {
                 value: model.data.amount,
                 min: 0.01,
@@ -70,6 +69,12 @@
             model.remark = {
                 height: "70px",
                 value: model.data.remark
+            };
+
+            model.remarkValidator = {
+                validationRules: [
+                    { type: 'required', message: 'Не заполнено поле комментария' }
+                ]
             };
            
 
@@ -93,7 +98,7 @@
                         }
                         return "";
                     },
-                    dataSource: storeFactory.createApiStore(urls.account.api(chartId())),
+                    dataSource: storeFactory.createApiStore(urls.account.active(chartId())),
                     contentTemplate: function(e) {
                         var value = e.component.option("value"),
                             $treeView = $("<div>")
@@ -168,6 +173,8 @@
                         model.resetErrors();
                         if (result.status == 0) {
                             DevExpress.ui.notify("Транзакция успешно размещена", "success", 2000);
+                            parentModel.accountsList.refresh();
+
                         } else {
                             DevExpress.ui.notify("Ошибка при размещении транзакции", "error", 2000);
                             switch(result.error) {
@@ -180,10 +187,10 @@
                                     model.errors.creditAccountConstraintViolation(true);
                                     break;
                                 case 4: // debit account constraint violation
-                                    model.errors.creditAccountTimelineViolation(true);
+                                    model.errors.debitAccountConstraintViolation(true);
                                     break;
                                 case 5: // credit account timeline violation
-                                    model.errors.debitAccountConstraintViolation(true);
+                                    model.errors.creditAccountTimelineViolation(true);
                                     break;
                                 case 6: // debit account timeline violation
                                     model.errors.debitAccountTimelineViolation(true);

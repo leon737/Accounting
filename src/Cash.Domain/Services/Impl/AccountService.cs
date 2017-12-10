@@ -27,6 +27,11 @@ namespace Cash.Domain.Services.Impl
             return _accountRepository.All(chartId);
         }
 
+        public IQueryable<Account> ListActiveAccounts(Guid chartId)
+        {
+            return _accountRepository.ListActiveAccounts(chartId);
+        }
+
         public IResult UpdateAccount(Guid accountId, UpdateAccountInfoRequest request, Guid principal)
         {
             return _accountRepository.UpdateInfo(accountId, request, principal).Success(() =>

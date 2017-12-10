@@ -1,18 +1,10 @@
 ﻿using System;
 
-namespace Cash.Domain.Models
+namespace Cash.Web.Areas.Cash.Models
 {
-    public class AccountTransaction : EntityWithStatisticalData
+    public class AccountTransactionViewModel
     {
         public Guid Id { get; set; }
-
-        public Guid CreditAccountId { get; set; }
-
-        public virtual Account CreditAccount { get; set; }
-
-        public Guid DebitAccountId { get; set; }
-
-        public virtual Account DebitAccount { get; set; }
 
         public DateTime Date { get; set; }
 
@@ -31,6 +23,10 @@ namespace Cash.Domain.Models
         public decimal CurrencyRate { get; set; }
 
         public string Remark { get; set; }
-        
+
+        public Guid CreditAccountId { get; set; }
+
+        public Guid DebitAccountId { get; set; }
+
     }
 }

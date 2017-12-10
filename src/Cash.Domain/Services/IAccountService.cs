@@ -11,6 +11,8 @@ namespace Cash.Domain.Services
     {
         IQueryable<Account> All(Guid chartId);
 
+        IQueryable<Account> ListActiveAccounts(Guid chartId);
+
         IResult UpdateAccount(Guid accountId, UpdateAccountInfoRequest request, Guid principal);
 
         IResult UpdateAccount(Guid accountId, UpdateAccountRequest request, Guid principal);
