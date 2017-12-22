@@ -6,17 +6,20 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<div data-bind="dxSelectBox:accountSelector"></div>
 
-
-<div data-bind="dxChart:chartOptions"></div>
-
-<div data-bind="dxDataGrid:transactions">
-    <div data-options="dxTemplate:{name:'accountSelectorTemplate'}">
-        <div data-bind="dxSelectBox:$root.accountSelector"></div>
+<div data-bind="dxTabPanel: chartsPanel" style="margin-top:10px">
+    <div data-options="dxTemplate: {name: 'transactionsChartTab'}">
+        <div data-bind="dxChart:chartOptions"></div>
     </div>
 </div>
-
-<div data-bind="dxDataGrid:transactionsExtra">
+<div data-bind="dxTabPanel: gridsPanel" style="margin-top:10px">
+    <div data-options="dxTemplate: {name: 'transactionsGridTab'}">
+        <div data-bind="dxDataGrid:transactions"></div>
+    </div>
+    <div data-options="dxTemplate: {name: 'transactionsExtraGridTab'}">
+        <div data-bind="dxDataGrid:transactionsExtra"></div>
+    </div>
 </div>
 
 <input type="hidden" id="chartId" value="@ViewBag.ChartId" />
