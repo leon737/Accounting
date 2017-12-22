@@ -248,6 +248,7 @@
     <Compile Include="Areas\Cash\Controllers\ChartApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\AccountApiController.cs" />
     <Compile Include="Areas\Cash\Controllers\ChartController.cs" />
+    <Compile Include="Areas\Cash\Models\AccountCardViewModel.cs" />
     <Compile Include="Areas\Cash\Models\AccountTransactionRelatedToAccountViewModel.cs" />
     <Compile Include="Areas\Cash\Models\AccountTransactionViewModel.cs" />
     <Compile Include="Areas\Cash\Models\AccountViewModel.cs" />

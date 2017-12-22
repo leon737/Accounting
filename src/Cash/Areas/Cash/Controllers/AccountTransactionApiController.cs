@@ -34,7 +34,6 @@ namespace Cash.Web.Areas.Cash.Controllers
         [HttpGet]
         public HttpResponseMessage Get(DataSourceLoadOptions loadOptions, Guid id)
         {
-            //return Get(() => _service.All(id), loadOptions);
             return Request.CreateResponse(DataSourceLoader.Load(_service.All(id)
                 .Select(v => new AccountTransactionRelatedToAccountViewModel
                 {
@@ -44,6 +43,29 @@ namespace Cash.Web.Areas.Cash.Controllers
                     PreBalance = v.CreditAccountId == id ? v.PreCreditAccountBalance : v.PreDebitAccountBalance,
                     PostBalance = v.CreditAccountId == id ? v.PostCreditAccountBalance : v.PostDebitAccountBalance,
                     CorrespondingAccountId = v.CreditAccountId == id ? v.DebitAccountId : v.CreditAccountId,
+                    RelationFrom = v.CreditAccountId == id ? BaseAccountRelationFrom.Credit : BaseAccountRelationFrom.Debit,
+                    CreatedBy = v.CreatedByUser.UserName,
+                    CreatedOn = v.CreatedOn,
+                    Remark = v.Remark
+                })
+                , loadOptions));
+        }
+
+        [Route("api/transaction/accountcard/{id}")]
+        [HttpGet]
+        public HttpResponseMessage AccountCard(DataSourceLoadOptions loadOptions, Guid id)
+        {
+            return Request.CreateResponse(DataSourceLoader.Load(_service.All(id)
+                .Select(v => new AccountCardViewModel()
+                {
+                    Id = v.Id,
+                    Date = v.Date,
+                    CreditAmount = v.CreditAccountId == id ? v.CreditAmount : (decimal?)null,
+                    DebitAmount = v.DebitAccountId == id ? v.DebitAmount : (decimal?)null,
+                    PreBalance = v.CreditAccountId == id ? v.PreCreditAccountBalance : v.PreDebitAccountBalance,
+                    PostBalance = v.CreditAccountId == id ? v.PostCreditAccountBalance : v.PostDebitAccountBalance,
+                    CreditAccountId = v.CreditAccountId,
+                    DebitAccountId = v.DebitAccountId,
                     RelationFrom = v.CreditAccountId == id ? BaseAccountRelationFrom.Credit : BaseAccountRelationFrom.Debit,
                     CreatedBy = v.CreatedByUser.UserName,
                     CreatedOn = v.CreatedOn,

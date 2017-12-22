@@ -14,12 +14,15 @@
     </div>
 </div>
 <div data-bind="dxTabPanel: gridsPanel" style="margin-top:10px">
+    <div data-options="dxTemplate: {name: 'accountCardGridTab'}">
+        <div data-bind="dxDataGrid:grid"></div>
+    </div>
     <div data-options="dxTemplate: {name: 'transactionsGridTab'}">
         <div data-bind="dxDataGrid:transactions"></div>
     </div>
     <div data-options="dxTemplate: {name: 'transactionsExtraGridTab'}">
         <div data-bind="dxDataGrid:transactionsExtra"></div>
-    </div>
+    </div>    
 </div>
 
 <input type="hidden" id="chartId" value="@ViewBag.ChartId" />

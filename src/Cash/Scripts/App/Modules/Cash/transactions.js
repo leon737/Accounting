@@ -1,6 +1,9 @@
 ﻿define(["application", "stores", "urls", "logger", "lodash",
-    "Modules/Cash/transactionsChartTab", "Modules/Cash/transactionsGridTab", "Modules/Cash/transactionsExtraGridTab"],
-    function (app, storeFactory, urls, log, lodash, transactionsChartTab, transactionsGridTab, transactionsExtraGridTab) {
+    "Modules/Cash/transactionsChartTab", 
+    "Modules/Cash/accountCardGridTab", "Modules/Cash/transactionsGridTab", "Modules/Cash/transactionsExtraGridTab"],
+    function (app, storeFactory, urls, log, _, 
+        transactionsChartTab, 
+        accountCardGridTab, transactionsGridTab, transactionsExtraGridTab) {
         return {
             run: function () {
 
@@ -18,6 +21,7 @@
 
                     model.gridsPanel = {
                         items: [
+                            new accountCardGridTab.class(model),
                             new transactionsGridTab.class(model),
                             new transactionsExtraGridTab.class(model)
                         ]

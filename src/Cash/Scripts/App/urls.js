@@ -14,7 +14,8 @@
         "transaction" : {
             "create": `${api}/transaction/create`,
             "api": accountId => `${api}/transaction/${accountId}`,
-            "extra": accountId => `${api}/transaction/extra/${accountId}`
+            "extra": accountId => `${api}/transaction/extra/${accountId}`,
+            "accountCard": accountId => `${api}/transaction/accountcard/${accountId}`
         }
     };
 });
