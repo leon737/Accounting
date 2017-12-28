@@ -1,6 +1,6 @@
 ﻿var require =
 {
-    baseUrl: '/Scripts/App',
+    baseUrl: '/Scripts/dist',
     paths: {
         domReady: "../domReady",
         lodash: "../lodash",

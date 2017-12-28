@@ -28,6 +28,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -366,15 +367,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="gulpfile.js" />
     <Content Include="Scripts\App\application.js" />
     <Content Include="Scripts\App\config.js" />
     <Content Include="Scripts\App\logger.js" />
+    <Content Include="Scripts\App\Modules\Cash\accountCardGridTab.js" />
     <Content Include="Scripts\App\Modules\Cash\transactions - Copy.js" />
     <Content Include="Scripts\App\Modules\Cash\transactions.js" />
     <Content Include="Scripts\App\Modules\Cash\accounts.js" />
     <Content Include="Scripts\App\Modules\Cash\addNewTransactionBlock.js" />
     <Content Include="Scripts\App\Modules\Cash\currency.js" />
     <Content Include="Scripts\App\Modules\Cash\chart.js" />
+    <Content Include="Scripts\App\Modules\Cash\transactionsChartTab.js" />
+    <Content Include="Scripts\App\Modules\Cash\transactionsExtraGridTab.js" />
+    <Content Include="Scripts\App\Modules\Cash\transactionsGridTab.js" />
     <Content Include="Scripts\App\settings.js" />
     <Content Include="Scripts\App\stores.js" />
     <Content Include="Scripts\App\urls.js" />
@@ -403,6 +409,7 @@
     <Content Include="Areas\Cash\Views\Currency\Index.cshtml" />
     <Content Include="Areas\Cash\Views\Shared\_AddNewTransactionBlock.cshtml" />
     <Content Include="Areas\Cash\Views\Account\Transactions.cshtml" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\devextreme-localization\dx.messages.de.js" />
